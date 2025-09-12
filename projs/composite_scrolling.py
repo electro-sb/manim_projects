@@ -2,14 +2,14 @@ from manim import *
 import numpy as np
 
 
-class ScrollingHarmonics(Scene):
+class ScrollingHarmonicsWithHeading(Scene):
     def construct(self):
         # Parameters
-        f0 = 0.5 #2.5  # fundamental frequency in Hz
-        harmonics = [1, 3, 5, 7]  # harmonic multipliers
-        duration = 20  # total animation time in seconds
-        window_width = 4  # seconds visible on screen at once
-        sample_rate = 200  # points per second
+        f0 = 2.5  # Hz
+        harmonics = [1, 3, 5, 7]
+        duration = 20
+        window_width = 4
+        sample_rate = 200
 
         # Axes
         axes = (
@@ -26,10 +26,13 @@ class ScrollingHarmonics(Scene):
         labels = axes.get_axis_labels("t (s)", "Amplitude")
         self.play(Create(axes), Write(labels))
 
-        # ValueTracker for time
+        # Time tracker
         t_tracker = ValueTracker(0)
 
-        # Function to generate composite signal up to current time
+        # Active harmonics list
+        active_harmonics = [harmonics[0]]
+
+        # Signal generator
         def get_signal():
             t0 = t_tracker.get_value()
             t_vals = np.linspace(t0, t0 + window_width, int(sample_rate * window_width))
@@ -38,19 +41,33 @@ class ScrollingHarmonics(Scene):
                 signal += np.sin(2 * np.pi * f0 * h * t_vals)
             signal /= len(active_harmonics)
             return axes.plot_line_graph(
-                x_values=t_vals - t0,  # shift so window starts at 0
+                x_values=t_vals - t0,
                 y_values=signal,
                 line_color=YELLOW,
                 add_vertex_dots=False,
             )
 
-        # Start with only the fundamental
-        active_harmonics = [harmonics[0]]
+        # Heading generator
+        heading = always_redraw(
+            lambda: MathTex(
+                r"\text{Harmonics: }"
+                + ", ".join(
+                    [
+                        f"{h}^{{\\text{{th}}}}" if h != 1 else "1^{\\text{st}}"
+                        for h in active_harmonics
+                    ]
+                )
+                + rf"\ \ (f_0 = {f0}\,\text{{Hz}})"
+            )
+            .scale(0.7)
+            .to_edge(UP)
+        )
+
+        # Add heading and signal
         signal_graph = always_redraw(get_signal)
+        self.play(FadeIn(heading), Create(signal_graph))
 
-        self.play(Create(signal_graph))
-
-        # Animate time progression and harmonic addition
+        # Animate time + harmonic additions
         time_per_harmonic = duration / len(harmonics)
         for h in harmonics[1:]:
             self.play(
@@ -60,7 +77,7 @@ class ScrollingHarmonics(Scene):
             )
             active_harmonics.append(h)
 
-        # Final stretch with all harmonics
+        # Final stretch
         remaining_time = duration - t_tracker.get_value()
         if remaining_time > 0:
             self.play(
@@ -71,7 +88,7 @@ class ScrollingHarmonics(Scene):
 
         self.wait()
 
-if __name__ == "__main__":
-    scene = ScrollingHarmonics()
-    scene.render()
 
+if __name__ == "__main__":
+    scene = ScrollingHarmonicsWithHeading()
+    scene.render()
