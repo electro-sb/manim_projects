@@ -34,7 +34,7 @@ class PythagorasProof(Scene):
         B = A + a * RIGHT
         C = A + b * UP
 
-        #for C position
+        # for C position
         hyp_mid_dot = Dot(
             point=(B + C) / 2,
             radius=0.05,
@@ -42,7 +42,6 @@ class PythagorasProof(Scene):
             fill_opacity=0  # fully transparent
         )
 
-      
         triangle = Polygon(A, B, C, color=WHITE, fill_color=tri_color, fill_opacity=0.6)
         a_label = MathTex("b").next_to(Line(A, C), LEFT)
         b_label = MathTex("a").next_to(Line(A, B), DOWN)
@@ -58,7 +57,7 @@ class PythagorasProof(Scene):
         # self.play(group1.animate.shift(shift_vec))
         # #self.wait(1)
         self.play(FadeOut(group1), scale=0.5)
-        #self.wait(1)
+        # self.wait(1)
 
         # Outer square side length
         outer_side = a + b
@@ -86,7 +85,7 @@ class PythagorasProof(Scene):
         )
 
         self.play(FadeIn(triangles_1))
-        #self.wait()
+        # self.wait()
 
         # Inner c^2 square
         c = (a**2 + b**2)**0.5
@@ -151,8 +150,36 @@ class PythagorasProof(Scene):
         group3.add(top_a_left, top_b_left, left_b_left, left_a_left)
         shift_group3 = RIGHT * 4
         group3.shift(shift_group3)
-        self.play(FadeIn(group3))
-        self.wait(2)
+        # self.play(FadeIn(group3))
+        # self.wait(2)
+
+        # Show the triangle transition
+        #bbox = outer_square.get_bounding_box()
+        width = outer_square.width
+        height = outer_square.height
+
+        # Create invisible target shapes for top-left and bottom-right
+        target_top_left = Square(side_length=width/2).move_to(
+            outer_square.get_corner(UL) + RIGHT*width/4 + DOWN*height/4
+        ).set_fill(opacity=0).set_stroke(opacity=0)
+
+        target_bottom_right = Square(side_length=width/2).move_to(
+            outer_square.get_corner(DR) + LEFT*width/4 + UP*height/4
+        ).set_fill(opacity=0).set_stroke(opacity=0)
+        copy_triangles = triangles_1.copy()
+        top_tri_group = VGroup(*copy_triangles[:2])  # Top two triangles
+        bottom_tri_group = VGroup(*copy_triangles[2:])  # Bottom
+
+        self.play(
+            Transform(top_tri_group, target_top_left),
+            Transform(bottom_tri_group, target_bottom_right),
+            FadeIn(group3),
+            run_time=2
+        )
+
+        # Draw the final square here
+        # self.play(FadeIn(group3))
+        # self.wait(2)
 
         # --- Equation target layout ---
         equation = MathTex(r"c^2", "=", r"a^2", "+", r"b^2").scale(1.2)
@@ -163,7 +190,7 @@ class PythagorasProof(Scene):
         a2_target = equation[2]
         b2_target = equation[4]
 
-        #set colors
+        # set colors
         c2_target.set_color(RED)
         a2_target.set_color(BLUE)
         b2_target.set_color(GREEN)
