@@ -1,1 +1,1 @@
-QT_QPA_PLATFORM=xcb python ./projs/matplotlib_functanim.py
+QT_QPA_PLATFORM=xcb python ./mplib_anim/matplotlib_functanim.py
