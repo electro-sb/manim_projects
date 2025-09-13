@@ -369,6 +369,7 @@ dependencies = [
     { name = "manim" },
     { name = "matplotlib" },
     { name = "pyqt6" },
+    { name = "tqdm" },
 ]
 
 [package.metadata]
@@ -376,6 +377,7 @@ requires-dist = [
     { name = "manim", specifier = ">=0.19.0" },
     { name = "matplotlib", specifier = ">=3.10.6" },
     { name = "pyqt6", specifier = ">=6.9.1" },
+    { name = "tqdm", specifier = ">=4.67.1" },
 ]
 
 [[package]]

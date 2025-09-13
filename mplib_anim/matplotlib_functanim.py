@@ -4,13 +4,14 @@ from matplotlib.animation import FuncAnimation
 import matplotlib
 matplotlib.use("QtAgg")  # For interactive window (needs PyQt installed)
 import time
+from tqdm import tqdm
 
 
 # Parameters
 f0 = 0.5 #2.5
 harmonics = [1, 3, 5, 7]
-duration = 20
-sample_rate = 200
+duration = 30 # seconds
+sample_rate = 60  # 200
 window_width = 4  # seconds visible at a time
 
 # Time vector for the whole signal
@@ -59,12 +60,19 @@ def update(frame_idx):
 
 
 # Frame generator for time-limited animation
-start_time = time.perf_counter()
+# Time based logic
+# start_time = time.perf_counter()
+# def frame_gen():
+#     frame_idx = 0
+#     while time.perf_counter() - start_time < duration:
+#         yield frame_idx
+#         frame_idx += 1
 
-
+# Frame based Logic
+total_frames = int(duration * sample_rate)
 def frame_gen():
     frame_idx = 0
-    while time.perf_counter() - start_time < duration:
+    for _ in tqdm(range(total_frames), desc="Animating"):
         yield frame_idx
         frame_idx += 1
 
@@ -76,4 +84,4 @@ ani = FuncAnimation(fig, update, frames=frame_gen, init_func=init, blit=True)
 
 if __name__ == "__main__":
     # ani.save("./media/images/scrolling_harmonics.gif", writer="pillow", fps=20)
-    ani.save("./media/videos/1080p60/mpl_harmonics.mp4", writer="ffmpeg", fps=20)  # To save as mp4
+    ani.save("./media/videos/1080p60/mpl_harmonics.mp4", writer="ffmpeg", fps=sample_rate)  # To save as mp4
