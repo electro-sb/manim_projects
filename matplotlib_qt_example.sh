@@ -1,0 +1,1 @@
+QT_QPA_PLATFORM=xcb python ./projs/matplotlib_functanim.py
