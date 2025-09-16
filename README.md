@@ -9,7 +9,7 @@
 ### Scrolling Harmonics
 ![Scrolling Harmonics](./README_gif_assets/ScrollingHarmonicsWithHeading.gif)
 
-### HArmonics [1,3,5,7] Amplitude[1,0.5,0.25,0.125]
+### HArmonics [1,3,5] Amplitude[1,0.5,0.25]
 ![Harmonics MatplotLib](./README_gif_assets/harmonic_function_135_animation.gif)
 
 ### Graphical plot of Sine and Cosine functions and point track
