@@ -92,6 +92,7 @@ class APlusBWholeSq(Scene):
             Write(final_eq[5]),  # "+"
             run_time=3
         )
+        self.wait(2)
 
 
 if __name__ == "__main__":
