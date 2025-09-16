@@ -6,5 +6,6 @@ dist/
 wheels/
 *.egg-info
 media/
+personal_notes/
 # Virtual environments
 .venv

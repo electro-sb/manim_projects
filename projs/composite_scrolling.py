@@ -5,7 +5,7 @@ import numpy as np
 class ScrollingHarmonicsWithHeading(Scene):
     def construct(self):
         # Parameters
-        f0 = 2.5  # Hz
+        f0 = 0.5 # 2.5 Hz
         harmonics = [1, 3, 5, 7]
         duration = 20
         window_width = 4
