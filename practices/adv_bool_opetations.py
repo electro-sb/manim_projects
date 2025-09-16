@@ -63,6 +63,7 @@ class BooleanOperations(Scene):
         diff2_text.next_to(d_2, UP)
         diff2_math = MathTex("B - A", color=math_text_color).move_to(d_2.get_center())
         self.play(FadeIn(diff2_text), FadeIn(diff2_math))
+        self.wait(2)
 
 
 if __name__ == "__main__":

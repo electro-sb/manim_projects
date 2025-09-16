@@ -6,6 +6,9 @@
 ### Graphical proof of Pythagorous theorem
 ![Pythagoras theorem Graphical Proof](./README_gif_assets/PythagorasProof.gif)
 
+### Set Operations
+![Set Boolean Operations](./README_gif_assets/BooleanOperations.gif)
+
 ### Scrolling Harmonics
 ![Scrolling Harmonics](./README_gif_assets/ScrollingHarmonicsWithHeading.gif)
 
