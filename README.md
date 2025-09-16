@@ -9,11 +9,12 @@
 ### Set Operations
 ![Set Boolean Operations](./README_gif_assets/BooleanOperations.gif)
 
+### Graphical plot of Sine and Cosine functions and point track
+![Sine and Cos Function Plot and track](./README_gif_assets/SinAndCosFunctionPlot.gif)
+
 ### Scrolling Harmonics
 ![Scrolling Harmonics](./README_gif_assets/ScrollingHarmonicsWithHeading.gif)
 
 ### Harmonics [1,3,5] Amplitude[1,0.5,0.25]
 ![Harmonics MatplotLib](./README_gif_assets/harmonic_function_135_animation.gif)
 
-### Graphical plot of Sine and Cosine functions and point track
-![Sine and Cos Function Plot and track](./README_gif_assets/SinAndCosFunctionPlot.gif)
