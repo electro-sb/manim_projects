@@ -51,9 +51,12 @@ class ShiftSineProjection(Scene):
         self.wait(2)
 
     def show_heading(self):
-        heading = MathTex(r"y = \sin(x - \psi), \psi = \frac{\pi}{4}").scale(0.8)
+        heading = MarkupText("<u>Phase Shifted Sine Wave Projection</u>").scale(0.8)
         heading.to_edge(UP)
-        self.add(heading)
+        footer = MathTex(r"y = \sin(\omega t - \psi), \psi = \frac{\pi}{4}").scale(0.8)
+        footer.set_color(YELLOW)
+        footer.next_to(heading, DOWN)
+        self.add(heading, footer)
 
     def show_axis(self):
         x_start = np.array([-6, 0, 0])
@@ -69,21 +72,43 @@ class ShiftSineProjection(Scene):
         self.add_x_labels()
 
     def add_x_labels(self):
+        # Labels at multiples of π
         x_labels = [
             MathTex(r"0"),
             MathTex(r"\pi"),
-            MathTex(r"2 \pi"),
-            MathTex(r"3 \pi"),
-            MathTex(r"4 \pi"),
+            MathTex(r"2\pi"),
+            MathTex(r"3\pi"),
+            MathTex(r"4\pi"),
         ]
-       
-        for i in range(len(x_labels)):
-            x_labels[i].next_to(np.array([-3 + 2 * i, 0, 0]), DOWN)
-            
-            self.add(x_labels[i])
+        # Group to hold ticks
+        ticks = VGroup()
+        # Add labels and ticks
+        for i, label in enumerate(x_labels):
+            # Position along x-axis: start at -3, step 2 units
+            x_pos = -3 + 2 * i
+            pos = np.array([x_pos, 0, 0])
+            # Place label slightly below axis
+            label.next_to(pos, DOWN)
+            # Add a short vertical tick line at the same x
+            tick = Line(pos + 0.1*DOWN, pos + 0.1*UP, color=WHITE, stroke_width=2)
+            ticks.add(tick)
+            self.add(label.scale(0.5))
+        # Add all ticks at once
+        self.add(ticks)
+        # X axis name
+        x_name = MathTex(r"\omega t \rightarrow").next_to(np.array([6, 0, 0]), DOWN*2)
+        y_name = MathTex(r"\uparrow y").next_to(np.array([-3, 2, 0]), LEFT)
+        # Y Ticks and labels
+        yt_tick = Line(np.array([-3, 1, 0]) + 0.1 * RIGHT, np.array([-3, 1, 0]) + 0.1 * LEFT, color=WHITE, stroke_width=2)
+        yb_tick = Line(np.array([-3, -1, 0]) + 0.1 * RIGHT, np.array([-3, -1, 0]) + 0.1 * LEFT, color=WHITE, stroke_width=2)
+        y_peak = MathTex(r"1").next_to(np.array([-3, 1, 0]), RIGHT).scale(0.5)
+        y_least = MathTex(r"-1").next_to(np.array([-3, -1, 0]), RIGHT).scale(0.5)
+        self.add(y_peak, y_least, yt_tick, yb_tick)
+        self.add(y_name, x_name)
 
     def show_circle(self):
         circle = Circle(radius=1)
+        circle.set_color(GREEN)
         circle.move_to(self.circle_origin)
         self.add(circle)
         self.circle = circle
@@ -141,8 +166,11 @@ class ShiftSineProjection(Scene):
                 end=np.array(
                     [self.curve_start[0] + self.a.get_value(), dot.get_center()[1], 0]
                 ),
-                stroke_width=2,
-            ).set_color([GREY, BLACK, GREY, BLACK, GREY])
+                stroke_width=0.25,
+                stroke_opacity=0.7,
+                stroke_color=ORANGE,
+                color=ORANGE,
+            )
         )
 
         # Vertical projection
