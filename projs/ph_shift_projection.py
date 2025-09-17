@@ -74,21 +74,33 @@ class ShiftSineProjection(Scene):
     def add_x_labels(self):
         # Labels at multiples of π
         x_labels = [
+            MathTex(r"\dot"),
+            MathTex(r"\frac{\pi}{2}"),
             MathTex(r"\pi"),
+            MathTex(r"\frac{3\pi}{2}"),
             MathTex(r"2\pi"),
-            #MathTex(r"3\pi"),
-            #MathTex(r"4\pi"),
+            MathTex(r"\frac{4\pi}{2}"),
         ]
         # Group to hold ticks
         ticks = VGroup()
+        x_axis_offset = -3.0   # y-axis is at x = -3
+        step = np.pi/2 
+        mul_fac = 0.05
         # Add labels and ticks
         for i, label in enumerate(x_labels):
-            x_pos = i * np.pi   # 0, π, 2π, 3π, 4π
+            x_pos = x_axis_offset + i * step   # 0, π, 2π, 3π, 4π
             pos = np.array([x_pos, 0, 0])
             label.next_to(pos, DOWN)
-            tick = Line(pos + 0.1*DOWN, pos + 0.1*UP, color=WHITE, stroke_width=2)
+            if mul_fac == 0.1:
+                mul_fac= 0.05 
+            elif mul_fac== 0.05:
+                mul_fac= 0.1
+            tick = Line(
+                pos + mul_fac * DOWN, pos + mul_fac * UP, color=WHITE, stroke_width=2
+            )
             ticks.add(tick)
             self.add(label.scale(0.5))
+
         # Add all ticks at once
         self.add(ticks)
         # X axis name
