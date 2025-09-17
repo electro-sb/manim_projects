@@ -79,7 +79,7 @@ class ShiftSineProjection(Scene):
             MathTex(r"\pi"),
             MathTex(r"\frac{3\pi}{2}"),
             MathTex(r"2\pi"),
-            MathTex(r"\frac{4\pi}{2}"),
+            MathTex(r"\frac{5\pi}{2}"),
         ]
         # Group to hold ticks
         ticks = VGroup()
