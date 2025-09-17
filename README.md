@@ -9,6 +9,9 @@
 ### Set Operations
 ![Set Boolean Operations](./README_gif_assets/BooleanOperations.gif)
 
+### Shifted Sine Wave projection
+![Shifted Sine Wave Projection](./README_gif_assets/ShiftSineProjection.gif)
+
 ### Graphical plot of Sine and Cosine functions and point track
 ![Sine and Cos Function Plot and track](./README_gif_assets/SinAndCosFunctionPlot.gif)
 
