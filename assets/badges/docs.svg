@@ -4,19 +4,19 @@
         <stop offset="0" stop-color="#bbb" stop-opacity=".1"/>
         <stop offset="1" stop-opacity=".1"/>
     </linearGradient>
-    <mask id="anybadge_8">
+    <mask id="anybadge_7">
         <rect width="125" height="20" rx="10" fill="#fff"/>
     </mask>
-    <g mask="url(#anybadge_8)">
-        <path fill="#808080" d="M0 0h125v20H0z"/>
+    <g mask="url(#anybadge_7)">
+        <path fill="#ADD8E6" d="M0 0h125v20H0z"/>
         <path fill="#262626" d="M38 2h78v16H38z"/>
         <path fill="#262626" d="M115,18 a1,1 0 0,0 0,-16"/>
         <path fill="url(#b)" d="M0 0h125v20H0z"/>
     </g>
-    <g fill="white" text-anchor="middle" font-family="DejaVu Sans,Verdana,Geneva,sans-serif" font-size="11">
+    <g fill="black" text-anchor="middle" font-family="DejaVu Sans,Verdana,Geneva,sans-serif" font-size="11">
         <text x="19.0" y="14">docs</text>
     </g>
-    <g fill=" gray" text-anchor="middle" font-family="DejaVu Sans,Verdana,Geneva,sans-serif" font-size="11">
+    <g fill=" lightblue" text-anchor="middle" font-family="DejaVu Sans,Verdana,Geneva,sans-serif" font-size="11">
         <text x="81.5" y="14">./README.md</text>
     </g>
 </svg>
