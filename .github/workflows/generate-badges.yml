@@ -3,7 +3,7 @@ name: Generate Badges
 on:
   push:
     branches:
-      - '**'  # Run on all branches
+      - '**'
   pull_request:
   workflow_dispatch:
 
@@ -12,6 +12,6 @@ permissions:
 
 jobs:
   badges:
-    uses: electro-sb/cicd_central/.github/workflows/reusable-badges.yml@main
+    uses: electro-sb/cicd_workflows/.github/workflows/badges.yml@main
     secrets:
       PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
