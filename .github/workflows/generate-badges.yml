@@ -1,16 +1,17 @@
-name: Scan and Generate Badges
+name: Generate Badges
 
 on:
   push:
     branches:
-      - main
-      - v*
+      - '**'  # Run on all branches
   pull_request:
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   badges:
-    uses: electro-sb/cicd_central/.github/workflows/ci-mand-scan-badge.yml@main
-    #with:
-      # optional any inputs defined in the central workflow
-    secrets: inherit
+    uses: electro-sb/cicd_central/.github/workflows/reusable-badges.yml@main
+    secrets:
+      PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
