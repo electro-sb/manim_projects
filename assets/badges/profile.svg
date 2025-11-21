@@ -1,22 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="245" height="20">
-    <linearGradient id="b" x2="0" y2="100%">
-        <stop offset="0" stop-color="#bbb" stop-opacity=".1"/>
-        <stop offset="1" stop-opacity=".1"/>
-    </linearGradient>
-    <mask id="anybadge_9">
-        <rect width="245" height="20" rx="10" fill="#fff"/>
-    </mask>
-    <g mask="url(#anybadge_9)">
-        <path fill="#2F4F4F" d="M0 0h245v20H0z"/>
-        <path fill="#262626" d="M55 2h181v16H55z"/>
-        <path fill="#262626" d="M235,18 a1,1 0 0,0 0,-16"/>
-        <path fill="url(#b)" d="M0 0h245v20H0z"/>
-    </g>
-    <g fill="black" text-anchor="middle" font-family="DejaVu Sans,Verdana,Geneva,sans-serif" font-size="11">
-        <text x="27.5" y="14">🧔‍♂️ ©️ </text>
-    </g>
-    <g fill=" #88f5ff" text-anchor="middle" font-family="DejaVu Sans,Verdana,Geneva,sans-serif" font-size="11">
-        <text x="150.0" y="14">https://github.com/electro-sb</text>
-    </g>
-</svg>
+version https://git-lfs.github.com/spec/v1
+oid sha256:ad4ebd9072556908c1fc398727ca1d07c9134fe57d0b0285e4b49719e39cb02a
+size 3253407
